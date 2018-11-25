@@ -70,6 +70,7 @@ radius[:] = [x * alpha for x in xi] # List of radius from xi
 pressure = []
 density = []
 temperature = []
+luminosity = []
 for i in theta:
     p = P_c*i**(n+1)
     roh = Roh_c*i**n
@@ -77,6 +78,12 @@ for i in theta:
     pressure.append(p)
     density.append(roh)
     temperature.append(T)
+
+Ltot = 0
+for i in range(len(radius)):
+    L = 4.*np.pi*(radius[i])**2*(dxi*alpha)*2.6E-37*density[i]*temperature[i]**4
+    Ltot = Ltot + L
+    luminosity.append(Ltot)
 
 plt.figure(1)
 plt.title("Pressure against radius")
@@ -95,5 +102,11 @@ plt.title("Temperature against radius")
 plt.xlabel("Radius[m]")
 plt.ylabel("Temperature")
 plt.plot(radius, temperature, label='temperature', color='k')
+
+plt.figure(4)
+plt.title("Luminosity against radius")
+plt.xlabel("Radius[m]")
+plt.ylabel("Luminosity")
+plt.plot(radius, luminosity, label='luminosity', color='red')
 
 plt.show()
