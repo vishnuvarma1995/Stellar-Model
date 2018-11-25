@@ -68,9 +68,32 @@ alpha = np.sqrt(((n+1)*K*Roh_c**((1/n)-1))/(4*np.pi*G))
 radius = []
 radius[:] = [x * alpha for x in xi] # List of radius from xi
 pressure = []
+density = []
+temperature = []
 for i in theta:
     p = P_c*i**(n+1)
+    roh = Roh_c*i**n
+    T = T_c*i**n
     pressure.append(p)
+    density.append(roh)
+    temperature.append(T)
 
-plt.plot(radius, pressure)
+plt.figure(1)
+plt.title("Pressure against radius")
+plt.xlabel("Radius[m]")
+plt.ylabel("Pressure")
+plt.plot(radius, pressure, label='pressure', color='green')
+
+plt.figure(2)
+plt.title("Density against radius")
+plt.xlabel("Radius[m]")
+plt.ylabel("Density")
+plt.plot(radius, density, label='density', color='blue')
+
+plt.figure(3)
+plt.title("Temperature against radius")
+plt.xlabel("Radius[m]")
+plt.ylabel("Temperature")
+plt.plot(radius, temperature, label='temperature', color='k')
+
 plt.show()
