@@ -19,6 +19,7 @@ mass = []
 density = []
 temperature = []
 pressure = []
+time =[]
 Total_Mass = (np.pi/3)*roh_c*Star_Radius**3
 Central_Pressure = (5*G*Total_Mass**2)/(4*np.pi*Star_Radius**4)
 # Central_Density = (3*Total_Mass/np.pi)/(Star_Radius**3)
@@ -27,8 +28,6 @@ Central_Pressure = (5*G*Total_Mass**2)/(4*np.pi*Star_Radius**4)
 r = Star_Radius/1000
 for i in range(0, Star_Radius, 10000):
     radius.append(i)
-
-# Radius dependent derived equations
 
 def Mass(radius_list):
     const = 4*np.pi*roh_c
